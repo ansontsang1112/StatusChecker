@@ -1,0 +1,22 @@
+{
+  "devices": [
+    {
+      "host": "10.68.0.1",
+      "port": 443,
+      "protocol": "tcp",
+      "description": "router"
+    },
+    {
+      "host": "panel.hypernite.com",
+      "port": 443,
+      "protocol": "tcp",
+      "description": "HN Panel"
+    },
+    {
+      "host": "www.hypernite.com",
+      "port": 443,
+      "protocol": "tcp",
+      "description": "HyperNitePo. Homepage"
+    }
+  ]
+}
