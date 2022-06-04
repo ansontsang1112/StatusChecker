@@ -18,17 +18,38 @@ type Ping struct {
 	Description string `json:"description"`
 }
 
-func jsonHandler(fileName string) Pings {
+type Config struct {
+	HttpConfig HttpConfig `json:"httpConfig"`
+}
+
+type HttpConfig struct {
+	Port int `json:"port"`
+}
+
+func pingJsonHandler(fileName string) Pings {
 	var pings Pings
 	jsonFile, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println("Successfully Opened " + fileName)
 	defer jsonFile.Close() // Close Json File
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	json.Unmarshal(byteValue, &pings)
 
 	return pings
+}
+
+func configJsonHandler(fileName string) Config {
+	var config Config
+	jsonFile, err := os.Open(fileName)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer jsonFile.Close()
+
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	json.Unmarshal(byteValue, &config)
+
+	return config
 }

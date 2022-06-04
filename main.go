@@ -1,21 +1,19 @@
 package main
 
 import (
-	"fmt"
 	"net"
 	"strconv"
 	"time"
 )
 
-const timeout time.Duration = time.Duration(2 * time.Second)
+const timeout = 1 * time.Second
 
 func main() {
-	var pingDevices = jsonHandler("pingDevices.json")
+	// Read Json Configuration
+	var pingDevices = pingJsonHandler("pingDevices.json")
+	var configurations = configJsonHandler("config.json")
 
-	for i := 0; i < len(pingDevices.Pings); i++ {
-		fmt.Println(pingHandler(pingDevices.Pings[i]))
-	}
-
+	server(configurations.HttpConfig.Port, pingDevices)
 }
 
 func pingHandler(device Ping) (bool, string) {
