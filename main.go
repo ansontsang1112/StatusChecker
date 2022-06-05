@@ -1,28 +1,16 @@
 package main
 
 import (
-	"net"
-	"strconv"
 	"time"
 )
 
 const timeout = 1 * time.Second
+const settingsLocation = "settings"
 
 func main() {
 	// Read Json Configuration
-	var pingDevices = pingJsonHandler("pingDevices.json")
-	var configurations = configJsonHandler("config.json")
+	var pingDevices = pingJsonHandler("pingDevices.json") // Init Devices
+	var configurations = configJsonHandler("config.json") // Init Config
 
 	server(configurations.HttpConfig.Port, pingDevices)
-}
-
-func pingHandler(device Ping) (bool, string) {
-	var inetSocket = device.Host + ":" + strconv.Itoa(device.Port)
-	_, err := net.DialTimeout(device.Protocol, inetSocket, timeout)
-
-	if err != nil {
-		return false, err.Error()
-	} else {
-		return true, ""
-	}
 }

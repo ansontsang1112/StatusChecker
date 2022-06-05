@@ -1,0 +1,32 @@
+{
+  "devices": [
+    {
+      "id": "cfdns",
+      "host": "1.1.1.1",
+      "port": 53,
+      "protocol": "udp",
+      "description": "Cloudflare DNS"
+    },
+    {
+      "id": "googleSite",
+      "host": "google.com",
+      "port": 443,
+      "protocol": "tcp",
+      "description": "Google Site"
+    },
+    {
+      "id": "HyperNite",
+      "host": "hypernite.com",
+      "port": 443,
+      "protocol": "tcp",
+      "description": "HyperNite Website"
+    },
+    {
+      "id": "Hypixel",
+      "host": "172.65.196.232",
+      "port": 25565,
+      "protocol": "tcp",
+      "description": "Hypixel Network"
+    }
+  ]
+}

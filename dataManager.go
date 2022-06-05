@@ -12,6 +12,7 @@ type Pings struct {
 }
 
 type Ping struct {
+	Id          string `json:"id"`
 	Host        string `json:"host"`
 	Port        int    `json:"port"`
 	Protocol    string `json:"protocol"`
@@ -28,7 +29,7 @@ type HttpConfig struct {
 
 func pingJsonHandler(fileName string) Pings {
 	var pings Pings
-	jsonFile, err := os.Open(fileName)
+	jsonFile, err := os.Open(settingsLocation + "/" + fileName)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -42,7 +43,7 @@ func pingJsonHandler(fileName string) Pings {
 
 func configJsonHandler(fileName string) Config {
 	var config Config
-	jsonFile, err := os.Open(fileName)
+	jsonFile, err := os.Open(settingsLocation + "/" + fileName)
 	if err != nil {
 		fmt.Println(err)
 	}

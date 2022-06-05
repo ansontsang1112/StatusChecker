@@ -9,6 +9,7 @@ import (
 )
 
 func server(port int, devices Pings) {
+
 	// All HTTP Handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/" {
@@ -35,14 +36,4 @@ func server(port int, devices Pings) {
 		log.Fatal(err)
 		return
 	}
-}
-
-func currentResultSetGenerator(pings Pings) map[string]bool {
-	var currentResultSet = make(map[string]bool)
-
-	for i := 0; i < len(pings.Pings); i++ {
-		currentResultSet[pings.Pings[i].Host], _ = pingHandler(pings.Pings[i])
-	}
-
-	return currentResultSet
 }
