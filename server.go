@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func server(port int, devices Pings) {
+func server(devices Pings, config Config) {
 
 	// All HTTP Handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -22,15 +22,15 @@ func server(port int, devices Pings) {
 			return
 		}
 
-		var displayResultSet, _ = json.Marshal(currentResultSetGenerator(devices))
+		var displayResultSet, _ = json.Marshal(currentResultSetGenerator(devices, config))
 
 		fmt.Fprint(w, string(displayResultSet))
 	})
 
 	// Server Handler
-	fmt.Println("Try to start server at port " + strconv.Itoa(port))
+	fmt.Println("Starting server at port " + strconv.Itoa(config.HttpConfig.Port))
 
-	err := http.ListenAndServe(":"+strconv.Itoa(port), nil)
+	err := http.ListenAndServe(":"+strconv.Itoa(config.HttpConfig.Port), nil)
 
 	if err != nil {
 		log.Fatal(err)

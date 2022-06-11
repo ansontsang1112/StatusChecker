@@ -12,15 +12,25 @@ type Pings struct {
 }
 
 type Ping struct {
-	Id          string `json:"id"`
-	Host        string `json:"host"`
-	Port        int    `json:"port"`
-	Protocol    string `json:"protocol"`
-	Description string `json:"description"`
+	Id          string `json:"id,omitempty"`
+	Host        string `json:"host,omitempty"`
+	Port        int    `json:"port,omitempty"`
+	Protocol    string `json:"protocol,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 type Config struct {
 	HttpConfig HttpConfig `json:"httpConfig"`
+	Settings   Settings   `json:"settings"`
+}
+
+type Settings struct {
+	ShowOption ShowOption `json:"show"`
+}
+
+type ShowOption struct {
+	Err     bool `json:"err"`
+	Details bool `json:"details"`
 }
 
 type HttpConfig struct {

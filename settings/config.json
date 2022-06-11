@@ -1,4 +1,10 @@
 {
+  "settings": {
+    "show" : {
+      "err": true,
+      "details": true
+    }
+  },
   "httpConfig": {
     "port": 8080
   }

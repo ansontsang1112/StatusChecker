@@ -12,5 +12,5 @@ func main() {
 	var pingDevices = pingJsonHandler("pingDevices.json") // Init Devices
 	var configurations = configJsonHandler("config.json") // Init Config
 
-	server(configurations.HttpConfig.Port, pingDevices)
+	server(pingDevices, configurations)
 }
