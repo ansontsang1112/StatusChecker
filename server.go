@@ -12,6 +12,10 @@ func server(devices Pings, config Config) {
 
 	// All HTTP Handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		// Handle CORS
+		w.Header().Set("Access-Control-Allow-Origin", config.HttpConfig.Cors)
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
 		if r.URL.Path != "/" {
 			http.Error(w, "404 Page Not Found", http.StatusNotFound)
 			return

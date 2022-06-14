@@ -2,10 +2,12 @@
   "settings": {
     "show" : {
       "err": true,
-      "details": true
+      "details": true,
+      "inetSocket": true
     }
   },
   "httpConfig": {
-    "port": 8080
+    "port": 8080,
+    "cors": "*"
   }
 }

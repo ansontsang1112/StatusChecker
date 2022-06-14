@@ -9,7 +9,7 @@ type PingResponse struct {
 	Err        string `json:"err,omitempty"`
 	Details    Ping   `json:"ping,omitempty"`
 	Status     bool
-	InetSocket string
+	InetSocket string `json:"inetSocket,omitempty"`
 }
 
 func pingHandler(device Ping, config Config) PingResponse {
@@ -18,8 +18,6 @@ func pingHandler(device Ping, config Config) PingResponse {
 	var inetSocket = device.Host + ":" + strconv.Itoa(device.Port)
 
 	_, err := net.DialTimeout(device.Protocol, inetSocket, timeout)
-
-	response.InetSocket = inetSocket
 
 	if err != nil {
 		response.Status = false
@@ -35,6 +33,10 @@ func pingHandler(device Ping, config Config) PingResponse {
 
 	if config.Settings.ShowOption.Details {
 		response.Details = device
+	}
+
+	if config.Settings.ShowOption.InetSocket {
+		response.InetSocket = inetSocket
 	}
 
 	return response

@@ -29,12 +29,14 @@ type Settings struct {
 }
 
 type ShowOption struct {
-	Err     bool `json:"err"`
-	Details bool `json:"details"`
+	Err        bool `json:"err"`
+	Details    bool `json:"details"`
+	InetSocket bool `json:"inetSocket"`
 }
 
 type HttpConfig struct {
-	Port int `json:"port"`
+	Port int    `json:"port"`
+	Cors string `json:"cors"`
 }
 
 func pingJsonHandler(fileName string) Pings {
